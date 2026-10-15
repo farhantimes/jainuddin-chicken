@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Admin &amp; Live Mandi Rates | Jainuddin Chicken Shop</title>
+  <meta name="description" content="Premier fresh poultry supplier and bulk catering butcher. Daily fresh chicken cuts (Curry Cut, Boneless, Lollipop, Legs, Keema) for home kitchens and 20kg to 500kg+ wedding catering.">
+  
+  <!-- Modern Typography Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- 5-Way Design System Stylesheet -->
+  <link rel="stylesheet" href="./css/site.css">
+</head>
+<body>
+
+  <!-- FLOATING PILL NAVBAR OVER HERO -->
+  <header class="floating-nav-container" id="navContainer">
+    <nav class="floating-pill" id="floatingPill" role="navigation" aria-label="Main Navigation" aria-expanded="false">
+      <div class="pill-brand">
+        <!-- Artisanal Cleaver / Crest SVG -->
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M19.78 4.22a.75.75 0 0 0-1.06 0L14 8.94 11.06 6A.75.75 0 0 0 10 6.22L6.22 10a.75.75 0 0 0 .22 1.06L9.38 14 4.22 19.16a.75.75 0 0 0 1.06 1.06L10.5 15l2.94 2.94a.75.75 0 0 0 1.06-.22L18.28 14a.75.75 0 0 0-.22-1.06L15.12 10l4.66-4.72a.75.75 0 0 0 0-1.06zM13.5 12.44l-1.94-1.94 1.94-1.94 1.94 1.94-1.94 1.94z"/>
+        </svg>
+        <span>JAINUDDIN</span>
+      </div>
+
+      <div class="pill-menu-trigger">
+        <span>Menu</span>
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M1.75 4.5h12.5a.75.75 0 0 0 0-1.5H1.75a.75.75 0 0 0 0 1.5zm0 4.25h12.5a.75.75 0 0 0 0-1.5H1.75a.75.75 0 0 0 0 1.5zm0 4.25h12.5a.75.75 0 0 0 0-1.5H1.75a.75.75 0 0 0 0 1.5z"/>
+        </svg>
+      </div>
+    </nav>
+
+    <!-- Floating Dropdown Panel -->
+    <div class="floating-menu-panel" id="floatingMenuPanel" role="menu">
+      <a href="./index.html#daily-cuts" class="menu-item" role="menuitem">
+        <span>Daily Cuts (1kg–3kg)</span>
+        <span style="font-size: 0.7rem; color: var(--terracotta);">₹ Live</span>
+      </a>
+      <a href="./index.html#gallery-strip" class="menu-item" role="menuitem">
+        <span>Cut Gallery</span>
+      </a>
+      <a href="./index.html#craft-standard" class="menu-item" role="menuitem">
+        <span>Hygiene & The Craft</span>
+      </a>
+      <a href="./catering.html" class="menu-item" role="menuitem" style="font-weight: 600;">
+        <span>Marriage & Party Bulk</span>
+        <span style="font-size: 0.65rem; background: var(--terracotta); color: #fff; padding: 2px 6px; border-radius: 2px;">500kg+</span>
+      </a>
+      <div class="menu-divider"></div>
+      <a href="./admin.html" class="menu-item" role="menuitem">
+        <span>Mandi Rates & Admin</span>
+      </a>
+      <a href="#order" class="menu-item menu-item-cta" data-open-drawer data-drawer-mode="retail" role="menuitem">
+        Quick Daily Order →
+      </a>
+    </div>
+  </header>
+
+
+<main id="mainContent">
+
+  <!-- ADMIN HEADER -->
+  <section class="admin-header">
+    <div class="container admin-header-inner">
+      <div>
+        <span class="eyebrow eyebrow-light" style="margin-bottom: 6px;">JAINUDDIN CHICKEN SHOP</span>
+        <h1>Daily Mandi Rates &amp; Order Dashboard</h1>
+      </div>
+      
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <span class="admin-badge">Live Shop Manager</span>
+        <a href="./index.html" style="font-size: 0.8125rem; color: var(--limestone); text-decoration: underline;">
+          ← View Live Website
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="admin-container">
+    <div class="container">
+
+      <!-- Flash message if saved -->
+      
+
+      <!-- SECTION 1: TODAY'S LIVE PER-KG MANDI RATES -->
+      <div class="admin-card">
+        <h2 class="admin-card-title">1. Today's Per-KG Mandi Rates</h2>
+        <p class="admin-card-desc">
+          Update the per-kg poultry rates below. When you tap <strong>Save Daily Rates</strong>, all 1kg, 2kg, 3kg prices, calculator multipliers, and shop totals across the live website update immediately.
+        </p>
+
+        <form action="/api/content/rates" method="POST">
+          <div class="rates-editor-grid">
+            
+              
+                <div class="rate-edit-box">
+                  <div class="rate-edit-label">Chicken Curry Cut</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Skinless / With Skin</div>
+                  <div class="rate-edit-input-group">
+                    <span class="rate-prefix">₹</span>
+                    <input type="number" name="rates[curry-cut]" class="rate-input" value="220" min="50" max="1500" step="1" required>
+                    <span style="font-size: 0.8125rem; color: var(--text-muted);">/ kg</span>
+                  </div>
+                </div>
+              
+                <div class="rate-edit-box">
+                  <div class="rate-edit-label">Pure Chicken Boneless</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Breast Fillets / Thigh Tikka Cubes</div>
+                  <div class="rate-edit-input-group">
+                    <span class="rate-prefix">₹</span>
+                    <input type="number" name="rates[boneless]" class="rate-input" value="340" min="50" max="1500" step="1" required>
+                    <span style="font-size: 0.8125rem; color: var(--text-muted);">/ kg</span>
+                  </div>
+                </div>
+              
+                <div class="rate-edit-box">
+                  <div class="rate-edit-label">Chicken Legs &amp; Tangdi Drumsticks</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Full Leg Quarters / Drumsticks</div>
+                  <div class="rate-edit-input-group">
+                    <span class="rate-prefix">₹</span>
+                    <input type="number" name="rates[drumsticks]" class="rate-input" value="280" min="50" max="1500" step="1" required>
+                    <span style="font-size: 0.8125rem; color: var(--text-muted);">/ kg</span>
+                  </div>
+                </div>
+              
+                <div class="rate-edit-box">
+                  <div class="rate-edit-label">Chicken Lollipop</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Frenched Party Cut</div>
+                  <div class="rate-edit-input-group">
+                    <span class="rate-prefix">₹</span>
+                    <input type="number" name="rates[lollipop]" class="rate-input" value="310" min="50" max="1500" step="1" required>
+                    <span style="font-size: 0.8125rem; color: var(--text-muted);">/ kg</span>
+                  </div>
+                </div>
+              
+                <div class="rate-edit-box">
+                  <div class="rate-edit-label">Chicken Wings</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Whole / Mid-Joint Party Wings</div>
+                  <div class="rate-edit-input-group">
+                    <span class="rate-prefix">₹</span>
+                    <input type="number" name="rates[wings]" class="rate-input" value="240" min="50" max="1500" step="1" required>
+                    <span style="font-size: 0.8125rem; color: var(--text-muted);">/ kg</span>
+                  </div>
+                </div>
+              
+                <div class="rate-edit-box">
+                  <div class="rate-edit-label">Chicken Keema &amp; Specials</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Fine Double Mince / Fresh Liver &amp; Gizzard</div>
+                  <div class="rate-edit-input-group">
+                    <span class="rate-prefix">₹</span>
+                    <input type="number" name="rates[keema]" class="rate-input" value="350" min="50" max="1500" step="1" required>
+                    <span style="font-size: 0.8125rem; color: var(--text-muted);">/ kg</span>
+                  </div>
+                </div>
+              
+                <div class="rate-edit-box">
+                  <div class="rate-edit-label">Whole Dressed Chicken</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Tandoori / Chargha Cut (800g – 1.4kg)</div>
+                  <div class="rate-edit-input-group">
+                    <span class="rate-prefix">₹</span>
+                    <input type="number" name="rates[whole-chicken]" class="rate-input" value="200" min="50" max="1500" step="1" required>
+                    <span style="font-size: 0.8125rem; color: var(--text-muted);">/ kg</span>
+                  </div>
+                </div>
+              
+            
+          </div>
+
+          <button type="submit" class="btn-primary" style="padding: 12px 28px;">
+            Save Daily Rates (Update Website Now)
+          </button>
+        </form>
+      </div>
+
+      <!-- SECTION 2: SHOP ANNOUNCEMENT & COUNTER STATUS -->
+      <div class="admin-card">
+        <h2 class="admin-card-title">2. Counter Status &amp; Morning Announcement</h2>
+        <p class="admin-card-desc">
+          Update the daily stock bulletin and store operational status displayed to customers.
+        </p>
+
+        <form action="/api/content/shop" method="POST">
+          <div style="display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 20px;">
+            <div>
+              <label class="form-label" for="adminAnnouncement">Daily Mandi Bulletin</label>
+              <input type="text" id="adminAnnouncement" name="announcement" class="form-control" value="Morning Mandi Arrival: 100% Farm-Dressed Live Batch. Never chilled, never frozen.">
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+              <div>
+                <label class="form-label" for="adminTimings">Shop Working Hours</label>
+                <input type="text" id="adminTimings" name="timings" class="form-control" value="Daily 6:30 AM – 9:30 PM (Fresh batches cut every 2 hours)">
+              </div>
+              <div>
+                <label class="form-label" for="adminPhone">Phone Number</label>
+                <input type="text" id="adminPhone" name="phone" class="form-control" value="+91 98201 54321">
+              </div>
+              <div>
+                <label class="form-label" for="adminIsOpen">Counter Status</label>
+                <select id="adminIsOpen" name="isOpen" class="form-control">
+                  <option value="true" selected>Open &amp; Cutting Fresh</option>
+                  <option value="false" >Closed for the Day</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-primary" style="padding: 12px 28px;">
+            Update Shop Status
+          </button>
+        </form>
+      </div>
+
+      <!-- SECTION 3: DAILY RETAIL ORDERS (1kg, 2kg, 3kg, 5kg) -->
+      <div class="admin-card">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px;">
+          <div>
+            <h2 class="admin-card-title">3. Live Daily Retail Orders (1kg–5kg)</h2>
+            <p class="admin-card-desc" style="margin-bottom: 0;">
+              Orders placed by daily home kitchen customers directly via the website.
+            </p>
+          </div>
+          <span style="font-size: 0.8125rem; font-weight: 700; color: var(--terracotta);">
+            4 Orders Recorded
+          </span>
+        </div>
+
+        <div class="data-table-wrapper">
+          <table class="admin-data-table">
+            <thead>
+              <tr>
+                <th>Order Ref</th>
+                <th>Customer</th>
+                <th>Cut &amp; Weight</th>
+                <th>Total (₹)</th>
+                <th>Prep Note</th>
+                <th>Fulfillment</th>
+                <th>Status</th>
+                <th>Update Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                
+                  <tr>
+                    <td><strong>JCS-RT-8415</strong></td>
+                    <td>
+                      <div><strong>Farhan Qureshi</strong></div>
+                      <div style="font-size: 0.75rem; color: var(--text-muted);">+91 98990 12345</div>
+                    </td>
+                    <td>
+                      <div><strong>2 KG</strong> · Pure Chicken Boneless</div>
+                      <div style="font-size: 0.75rem; color: var(--text-muted);">@ ₹340/kg</div>
+                    </td>
+                    <td>
+                      <span style="font-weight: 700; color: var(--charcoal); font-size: 1.05rem;">₹680</span>
+                    </td>
+                    <td style="max-width: 180px; font-size: 0.8125rem; color: var(--text-muted);">
+                      Bite-Sized Tikka Cubes
+                    </td>
+                    <td>
+                      <span style="text-transform: capitalize; font-size: 0.8125rem;">
+                        delivery: Flat 4B, Emerald Court
+                      </span>
+                    </td>
+                    <td>
+                      <span class="status-badge status-new">
+                        New Order
+                      </span>
+                    </td>
+                    <td>
+                      <form action="/api/orders/JCS-RT-8415/status" method="POST" style="display: flex; gap: 4px;">
+                        <input type="hidden" name="type" value="retail">
+                        <select name="status" style="font-size: 0.75rem; padding: 4px; border: 1px solid var(--limestone);">
+                          <option value="New Order" selected>New</option>
+                          <option value="In Prep" >Prepping</option>
+                          <option value="Ready for Pickup" >Ready</option>
+                          <option value="Delivered" >Delivered</option>
+                        </select>
+                        <button type="submit" style="font-size: 0.7rem; padding: 4px 8px; background: var(--charcoal); color: #fff; border: none; cursor: pointer;">
+                          Set
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                
+                  <tr>
+                    <td><strong>JCS-RT-1001</strong></td>
+                    <td>
+                      <div><strong>Zubair Ahmed</strong></div>
+                      <div style="font-size: 0.75rem; color: var(--text-muted);">+91 98711 23456</div>
+                    </td>
+                    <td>
+                      <div><strong>2 KG</strong> · Pure Chicken Boneless</div>
+                      <div style="font-size: 0.75rem; color: var(--text-muted);">@ ₹340/kg</div>
+                    </td>
+                    <td>
+                      <span style="font-weight: 700; color: var(--charcoal); font-size: 1.05rem;">₹680</span>
+                    </td>
+                    <td style="max-width: 180px; font-size: 0.8125rem; color: var(--text-muted);">
+                      Bite-sized Tikka Cubes, fat trimmed
+                    </td>
+                    <td>
+                      <span style="text-transform: capitalize; font-size: 0.8125rem;">
+                        delivery: B-42, Gulshan Enclave, Civil Lines
+                      </span>
+                    </td>
+                    <td>
+                      <span class="status-badge status-done">
+                        Delivered
+                      </span>
+                    </td>
+                    <td>
+                      <form action="/api/orders/JCS-RT-1001/status" method="POST" style="display: flex; gap: 4px;">
+                        <input type="hidden" name="type" value="retail">
+                        <select name="status" style="font-size: 0.75rem; padding: 4px; border: 1px solid var(--limestone);">
+                          <option value="New Order" >New</option>
+                          <option value="In Prep" >Prepping</option>
+                          <option value="Ready for Pickup" >Ready</option>
+                          <option value="Delivered" selected>Delivered</option>
+                        </select>
+                        <button type="submit" style="font-size: 0.7rem; padding: 4px 8px; background: var(--charcoal); color: #fff; border: none; cursor: pointer;">
+                          Set
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                
+                  <tr>
+                    <td><strong>JCS-RT-1002</strong></td>
+                    <td>
+                      <div><strong>Dr. Neha Sharma</strong></div>
+                      <div style="font-size: 0.75rem; color: var(--text-muted);">+91 98122 34567</div>
+                    </td>
+                    <td>
+                      <div><strong>1 KG</strong> · Chicken Curry Cut</div>
+                      <div style="font-size: 0.75rem; color: var(--text-muted);">@ ₹220/kg</div>
+                    </td>
+                    <td>
+                      <span style="font-weight: 700; color: var(--charcoal); font-size: 1.05rem;">₹220</span>
+                    </td>
+                    <td style="max-width: 180px; font-size: 0.8125rem; color: var(--text-muted);">
+                      Skinless, small 18-pc curry cut
+                    </td>
+                    <td>
+                      <span style="text-transform: capitalize; font-size: 0.8125rem;">
+                        pickup: Shop Counter Pickup
+                      </span>
+                    </td>
+                    <td>
+                      <span class="status-badge status-new">
+                        Ready for Pickup
+                      </span>
+                    </td>
+                    <td>
+                      <form action="/api/orders/JCS-RT-1002/status" method="POST" style="display: flex; gap: 4px;">
+                        <input type="hidden" name="type" value="retail">
+                        <select name="status" style="font-size: 0.75rem; padding: 4px; border: 1px solid var(--limestone);">
+                          <option value="New Order" >New</option>
+                          <option value="In Prep" >Prepping</option>
+                          <option value="Ready for Pickup" selected>Ready</option>
+                          <option value="Delivered" >Delivered</option>
+                        </select>
+                        <button type="submit" style="font-size: 0.7rem; padding: 4px 8px; background: var(--charcoal); color: #fff; border: none; cursor: pointer;">
+                          Set
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                
+                  <tr>
+                    <td><strong>JCS-RT-1003</strong></td>
+                    <td>
+                      <div><strong>Suresh Oberoi</strong></div>
+                      <div style="font-size: 0.75rem; color: var(--text-muted);">+91 99988 77665</div>
+                    </td>
+                    <td>
+                      <div><strong>3 KG</strong> · Chicken Lollipop</div>
+                      <div style="font-size: 0.75rem; color: var(--text-muted);">@ ₹310/kg</div>
+                    </td>
+                    <td>
+                      <span style="font-weight: 700; color: var(--charcoal); font-size: 1.05rem;">₹930</span>
+                    </td>
+                    <td style="max-width: 180px; font-size: 0.8125rem; color: var(--text-muted);">
+                      Frenched party wings, clean bone handle
+                    </td>
+                    <td>
+                      <span style="text-transform: capitalize; font-size: 0.8125rem;">
+                        delivery: 12A Regency Heights, Ring Road
+                      </span>
+                    </td>
+                    <td>
+                      <span class="status-badge status-prep">
+                        In Prep
+                      </span>
+                    </td>
+                    <td>
+                      <form action="/api/orders/JCS-RT-1003/status" method="POST" style="display: flex; gap: 4px;">
+                        <input type="hidden" name="type" value="retail">
+                        <select name="status" style="font-size: 0.75rem; padding: 4px; border: 1px solid var(--limestone);">
+                          <option value="New Order" >New</option>
+                          <option value="In Prep" selected>Prepping</option>
+                          <option value="Ready for Pickup" >Ready</option>
+                          <option value="Delivered" >Delivered</option>
+                        </select>
+                        <button type="submit" style="font-size: 0.7rem; padding: 4px 8px; background: var(--charcoal); color: #fff; border: none; cursor: pointer;">
+                          Set
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SECTION 4: MARRIAGE & BULK CATERING BOOKINGS (15kg - 500kg+) -->
+      <div class="admin-card">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px;">
+          <div>
+            <h2 class="admin-card-title">4. Marriage &amp; Party Bulk Bookings (15kg–500kg+)</h2>
+            <p class="admin-card-desc" style="margin-bottom: 0;">
+              Large commercial orders for wedding banquets, receptions, hotels, and event cooks.
+            </p>
+          </div>
+          <span style="font-size: 0.8125rem; font-weight: 700; color: var(--terracotta);">
+            3 Bookings
+          </span>
+        </div>
+
+        <div class="data-table-wrapper">
+          <table class="admin-data-table">
+            <thead>
+              <tr>
+                <th>Booking Ref</th>
+                <th>Host / Caterer</th>
+                <th>Event Date &amp; Slot</th>
+                <th>Palace / Venue</th>
+                <th>Guests &amp; Total KG</th>
+                <th>Cuts Breakdown</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                
+                  <tr>
+                    <td><strong>JCS-CAT-2386</strong></td>
+                    <td>
+                      <div><strong>Siddiqui Wedding Kitchens</strong></div>
+                      <div style="font-size: 0.75rem; color: var(--text-muted);">+91 98111 99999</div>
+                    </td>
+                    <td>
+                      <div><strong>2026-11-05</strong></div>
+                      <div style="font-size: 0.75rem; color: var(--terracotta); font-weight: 600;">05:30 AM (Early Morning)</div>
+                    </td>
+                    <td>
+                      Royal Palm Banquets
+                    </td>
+                    <td>
+                      <div><strong style="font-size: 1.1rem; color: var(--charcoal);">180 KG</strong></div>
+                      <div style="font-size: 0.75rem; color: var(--text-muted);">~600 Guests</div>
+                    </td>
+                    <td style="max-width: 220px; font-size: 0.8125rem; color: var(--charcoal);">
+                      120kg Curry Cut Deg Size + 40kg Boneless Tikka + 20kg Lollipops
+                    </td>
+                    <td>
+                      <span class="status-badge status-new">
+                        New Inquiry
+                      </span>
+                    </td>
+                    <td>
+                      <form action="/api/orders/JCS-CAT-2386/status" method="POST" style="display: flex; gap: 4px;">
+                        <input type="hidden" name="type" value="catering">
+                        <select name="status" style="font-size: 0.75rem; padding: 4px; border: 1px solid var(--limestone);">
+                          <option value="New Inquiry" selected>Inquiry</option>
+                          <option value="Confirmed" >Confirmed</option>
+                          <option value="Scheduled" >Scheduled</option>
+                          <option value="Delivered" >Delivered</option>
+                        </select>
+                        <button type="submit" style="font-size: 0.7rem; padding: 4px 8px; background: var(--charcoal); color: #fff; border: none; cursor: pointer;">
+                          Set
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                
+                  <tr>
+                    <td><strong>JCS-CAT-501</strong></td>
+                    <td>
+                      <div><strong>Haji Rafiq (Qureshi Caterers)</strong></div>
+                      <div style="font-size: 0.75rem; color: var(--text-muted);">+91 98210 99887</div>
+                    </td>
+                    <td>
+                      <div><strong>2026-10-24</strong></div>
+                      <div style="font-size: 0.75rem; color: var(--terracotta); font-weight: 600;">06:00 AM (Early Morning Slot)</div>
+                    </td>
+                    <td>
+                      Grand Noor Palace, GT Road
+                    </td>
+                    <td>
+                      <div><strong style="font-size: 1.1rem; color: var(--charcoal);">160 KG</strong></div>
+                      <div style="font-size: 0.75rem; color: var(--text-muted);">~450 Guests</div>
+                    </td>
+                    <td style="max-width: 220px; font-size: 0.8125rem; color: var(--charcoal);">
+                      100kg Curry Cut (16-pc wedding deg size) + 40kg Boneless Tikka + 20kg Frenched Lollipops
+                    </td>
+                    <td>
+                      <span class="status-badge status-done">
+                        Confirmed
+                      </span>
+                    </td>
+                    <td>
+                      <form action="/api/orders/JCS-CAT-501/status" method="POST" style="display: flex; gap: 4px;">
+                        <input type="hidden" name="type" value="catering">
+                        <select name="status" style="font-size: 0.75rem; padding: 4px; border: 1px solid var(--limestone);">
+                          <option value="New Inquiry" >Inquiry</option>
+                          <option value="Confirmed" selected>Confirmed</option>
+                          <option value="Scheduled" >Scheduled</option>
+                          <option value="Delivered" >Delivered</option>
+                        </select>
+                        <button type="submit" style="font-size: 0.7rem; padding: 4px 8px; background: var(--charcoal); color: #fff; border: none; cursor: pointer;">
+                          Set
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                
+                  <tr>
+                    <td><strong>JCS-CAT-502</strong></td>
+                    <td>
+                      <div><strong>Al-Barkat Banquets (Tariq Khan)</strong></div>
+                      <div style="font-size: 0.75rem; color: var(--text-muted);">+91 97110 33445</div>
+                    </td>
+                    <td>
+                      <div><strong>2026-10-18</strong></div>
+                      <div style="font-size: 0.75rem; color: var(--terracotta); font-weight: 600;">04:30 PM (Evening Batch)</div>
+                    </td>
+                    <td>
+                      Al-Barkat Banquet Hall, Civil Lines
+                    </td>
+                    <td>
+                      <div><strong style="font-size: 1.1rem; color: var(--charcoal);">75 KG</strong></div>
+                      <div style="font-size: 0.75rem; color: var(--text-muted);">~200 Guests</div>
+                    </td>
+                    <td style="max-width: 220px; font-size: 0.8125rem; color: var(--charcoal);">
+                      50kg Curry Cut Skinless + 25kg Drumsticks score-cut
+                    </td>
+                    <td>
+                      <span class="status-badge status-prep">
+                        Scheduled
+                      </span>
+                    </td>
+                    <td>
+                      <form action="/api/orders/JCS-CAT-502/status" method="POST" style="display: flex; gap: 4px;">
+                        <input type="hidden" name="type" value="catering">
+                        <select name="status" style="font-size: 0.75rem; padding: 4px; border: 1px solid var(--limestone);">
+                          <option value="New Inquiry" >Inquiry</option>
+                          <option value="Confirmed" >Confirmed</option>
+                          <option value="Scheduled" selected>Scheduled</option>
+                          <option value="Delivered" >Delivered</option>
+                        </select>
+                        <button type="submit" style="font-size: 0.7rem; padding: 4px 8px; background: var(--charcoal); color: #fff; border: none; cursor: pointer;">
+                          Set
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+  <!-- TINY MINIMALIST FOOTER -->
+  <footer class="tiny-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        JAINUDDIN CHICKEN SHOP
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer Links">
+        <a href="./index.html#daily-cuts">Daily Cuts (1kg–3kg)</a>
+        <span>|</span>
+        <a href="./catering.html">Marriage & Party Bulk (/catering)</a>
+        <span>|</span>
+        <a href="./admin.html">Admin (/admin)</a>
+      </nav>
+
+      <div class="footer-copy">
+        © 2026 Jainuddin Chicken Shop. 100% Fresh & Hygienic.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Include Slide-Over Order Drawer Partial -->
+  <!-- SLIDE-OVER ARCHITECTURAL ORDER & CATERING DRAWER -->
+<div class="drawer-backdrop" id="drawerBackdrop" aria-hidden="true">
+  <div class="drawer-panel" id="drawerPanel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+    
+    <!-- Drawer Header -->
+    <div class="drawer-header">
+      <div class="drawer-title-box">
+        <h3 id="drawerTitle">Jainuddin Fresh Order</h3>
+        <p>Direct Counter & Event Booking</p>
+      </div>
+      <button type="button" class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close Order Drawer">
+        ✕
+      </button>
+    </div>
+
+    <!-- Dual Mode Tabs -->
+    <div class="drawer-tabs">
+      <button type="button" class="drawer-tab is-active" id="tabRetail">
+        Daily Shop (1–5 KG)
+      </button>
+      <button type="button" class="drawer-tab" id="tabBulk">
+        Marriage Bulk (15–500+ KG)
+      </button>
+    </div>
+
+    <!-- TAB 1: DAILY RETAIL ORDER (1kg - 5kg+) -->
+    <div class="drawer-body" id="drawerBodyRetail">
+      <form id="drawerRetailForm">
+        
+        <!-- Cut Selection -->
+        <div class="form-group">
+          <label class="form-label" for="drawerCutSelect">Select Master Cut</label>
+          <select id="drawerCutSelect" class="form-control" required>
+            
+              
+                <option value="curry-cut" data-rate="220">
+                  Chicken Curry Cut — ₹220/kg (Skinless / With Skin)
+                </option>
+              
+                <option value="boneless" data-rate="340">
+                  Pure Chicken Boneless — ₹340/kg (Breast Fillets / Thigh Tikka Cubes)
+                </option>
+              
+                <option value="drumsticks" data-rate="280">
+                  Chicken Legs &amp; Tangdi Drumsticks — ₹280/kg (Full Leg Quarters / Drumsticks)
+                </option>
+              
+                <option value="lollipop" data-rate="310">
+                  Chicken Lollipop — ₹310/kg (Frenched Party Cut)
+                </option>
+              
+                <option value="wings" data-rate="240">
+                  Chicken Wings — ₹240/kg (Whole / Mid-Joint Party Wings)
+                </option>
+              
+                <option value="keema" data-rate="350">
+                  Chicken Keema &amp; Specials — ₹350/kg (Fine Double Mince / Fresh Liver &amp; Gizzard)
+                </option>
+              
+                <option value="whole-chicken" data-rate="200">
+                  Whole Dressed Chicken — ₹200/kg (Tandoori / Chargha Cut (800g – 1.4kg))
+                </option>
+              
+            
+          </select>
+        </div>
+
+        <!-- Quick Weight Tier Selector -->
+        <div class="form-group">
+          <label class="form-label">Pick Weight Tier</label>
+          <div class="weight-selector-grid">
+            <button type="button" class="weight-pill-btn drawer-weight-pill is-active" data-weight="1">1 KG</button>
+            <button type="button" class="weight-pill-btn drawer-weight-pill" data-weight="2">2 KG</button>
+            <button type="button" class="weight-pill-btn drawer-weight-pill" data-weight="3">3 KG</button>
+            <button type="button" class="weight-pill-btn drawer-weight-pill" data-weight="5">5 KG</button>
+          </div>
+          <div class="custom-weight-row">
+            <label for="drawerCustomWeight" style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Exact KG:</label>
+            <input type="number" id="drawerCustomWeight" class="form-control" value="1" min="0.5" max="25" step="0.5" style="width: 110px;">
+          </div>
+        </div>
+
+        <!-- Preparation Specification -->
+        <div class="form-group">
+          <label class="form-label" for="retailPrepNote">Custom Butchery Prep Note</label>
+          <select id="retailPrepNote" class="form-control">
+            <option value="Standard Clean Cut">Standard Clean Cut</option>
+            <option value="Skinless (Clean Fat Trimmed)">Skinless (Clean Fat Trimmed)</option>
+            <option value="With Skin (Crisp Cut)">With Skin (Crisp Cut)</option>
+            <option value="Small Curry Pieces (18-pc Cut)">Small Curry Pieces (18-pc Cut)</option>
+            <option value="Medium Curry Pieces (14-pc Cut)">Medium Curry Pieces (14-pc Cut)</option>
+            <option value="Bite-Sized Tikka Cubes">Bite-Sized Tikka Cubes</option>
+            <option value="Deep Tandoori Score Slits">Deep Tandoori Score Slits</option>
+            <option value="Frenched Lollipop Sticks">Frenched Lollipop Sticks</option>
+          </select>
+        </div>
+
+        <!-- Live Price Calculation Box -->
+        <div class="drawer-price-summary">
+          <div>
+            <div class="price-summary-label">Estimated Total</div>
+            <div class="price-summary-calc" id="drawerDisplayCalc">1 kg × ₹220/kg</div>
+          </div>
+          <div class="price-summary-value" id="drawerDisplayTotal">₹220</div>
+        </div>
+
+        <!-- Customer Details -->
+        <div class="form-group">
+          <label class="form-label" for="retailCustomerName">Your Name</label>
+          <input type="text" id="retailCustomerName" class="form-control" placeholder="e.g. Imran Khan" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="retailPhone">Phone / WhatsApp Number</label>
+          <input type="tel" id="retailPhone" class="form-control" placeholder="+91 98XXX XXXXX" required>
+        </div>
+
+        <!-- Fulfillment Toggle -->
+        <div class="form-group">
+          <label class="form-label">Order Type</label>
+          <div style="display: flex; gap: 20px; font-size: 0.875rem;">
+            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+              <input type="radio" name="fulfillment" value="pickup" checked> Shop Pickup
+            </label>
+            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+              <input type="radio" name="fulfillment" value="delivery"> Local Home Delivery
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="retailAddress">Delivery Address / Pickup Slot</label>
+          <input type="text" id="retailAddress" class="form-control" placeholder="House/Flat No, Landmark or Counter Pickup time" value="Shop Counter Pickup">
+        </div>
+
+        <div class="drawer-footer" style="margin: 0 -28px -24px; padding: 20px 28px;">
+          <button type="submit" class="btn-drawer-submit">
+            Place Daily Order (₹ Instant Save)
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- TAB 2: MARRIAGE & BULK CATERING BOOKING (15kg - 500kg+) -->
+    <div class="drawer-body" id="drawerBodyBulk" style="display: none;">
+      <form id="drawerBulkForm">
+        
+        <div style="background: rgba(158, 59, 36, 0.08); border-left: 3px solid var(--terracotta); padding: 12px 14px; margin-bottom: 20px; font-size: 0.8125rem;">
+          <strong>Wholesale Mandi Rates Applied:</strong> Sanitized crate delivery directly to your marriage venue kitchen.
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="bulkHostName">Host / Master Caterer Name</label>
+          <input type="text" id="bulkHostName" class="form-control" placeholder="e.g. Haji Rafiq Qureshi" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="bulkPhone">Phone / WhatsApp</label>
+          <input type="tel" id="bulkPhone" class="form-control" placeholder="+91 98XXX XXXXX" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label class="form-label" for="bulkEventDate">Wedding / Event Date</label>
+            <input type="date" id="bulkEventDate" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="bulkEventTime">Delivery Batch Slot</label>
+            <select id="bulkEventTime" class="form-control">
+              <option value="05:30 AM (Early Morning)">05:30 AM (Morning Dawat)</option>
+              <option value="08:00 AM (Standard Morning)">08:00 AM (Morning Prep)</option>
+              <option value="03:30 PM (Evening Reception)">03:30 PM (Dinner Feast)</option>
+              <option value="06:00 PM (Late Night Tandoor)">06:00 PM (Tandoor Starters)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="bulkVenue">Marriage Palace / Banquet Hall</label>
+          <input type="text" id="bulkVenue" class="form-control" placeholder="e.g. Grand Noor Palace, Civil Lines" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label class="form-label" for="bulkGuestCount">Estimated Guests</label>
+            <input type="number" id="bulkGuestCount" class="form-control" placeholder="e.g. 400" min="20" max="5000">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="bulkTotalKg">Total Poultry (KG)</label>
+            <input type="number" id="bulkTotalKg" class="form-control" placeholder="e.g. 120" min="15" max="2000" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="bulkBreakdown">Cuts Breakdown & Butchery Instructions</label>
+          <textarea id="bulkBreakdown" class="form-control" rows="3" placeholder="e.g. 70kg Curry Cut (16-pc wedding deg size) + 30kg Tikka Boneless + 20kg Lollipops"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="bulkNotes">Special Crate / Ice Packing Notes</label>
+          <input type="text" id="bulkNotes" class="form-control" placeholder="e.g. Deliver in 2 batches, deg kitchen entrance">
+        </div>
+
+        <div class="drawer-footer" style="margin: 0 -28px -24px; padding: 20px 28px;">
+          <button type="submit" class="btn-drawer-submit">
+            Confirm Bulk Catering Booking
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ORDER SUCCESS CONFIRMATION -->
+    <div class="order-success-box" id="orderSuccessBox">
+      <div class="success-icon">✓</div>
+      <h4 style="font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 8px;">Order Recorded</h4>
+      <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 14px;">
+        Order Ref: <strong id="successOrderId" style="color: var(--charcoal);"></strong>
+      </p>
+      <p id="successDetails" style="font-size: 0.9375rem; margin-bottom: 24px; color: var(--charcoal);"></p>
+
+      <div style="border-top: 1px solid var(--limestone); padding-top: 20px;">
+        <p style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 8px;">
+          For instant kitchen confirmation and live batch tracking:
+        </p>
+        <a id="whatsappConfirmBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-confirm">
+          <!-- WhatsApp SVG -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.24 8.24-1.44 0-2.85-.38-4.09-1.1l-.29-.17-3.12.82.83-3.04-.19-.31a8.14 8.14 0 0 1-1.25-4.44c0-4.54 3.7-8.24 8.24-8.24zm4.51 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.4-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.71 4.3 3.8 2.53 1.09 2.53.73 2.98.69.46-.04 1.47-.6 1.68-1.18.21-.59.21-1.09.15-1.19-.06-.09-.23-.15-.48-.27z"/>
+          </svg>
+          Confirm with Shop via WhatsApp
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Vanilla Client Core JS -->
+  <script src="./js/site.js"></script>
+</body>
+</html>
+
